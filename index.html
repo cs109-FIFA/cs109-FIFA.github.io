@@ -3,16 +3,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Soccer player analysis</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
+    <link rel="stylesheet" href="stylesheets/d3_styles.css">
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-        <style type="text/css">
+    <!Code for the D3 visualization>
+    <script type="text/javascript"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="javascripts/d3_js.js"></script>
+    <style type="text/css">
             .btn {
                 background: #3498db;
                 background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -29,7 +33,6 @@
                 padding: 4px 4px 4px 4px;
                 text-decoration: none;
             }
-
             .btn:hover {
                 background: #3cb0fd;
                 background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
@@ -39,68 +42,7 @@
                 background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
                 text-decoration: none;
             }
-            circle:hover {
-                fill: orange;
-            } 
-            circle {
-                background-image: -moz-radial-gradient(45px 45px 45deg, circle cover, yellow 0%, orange 100%, red 95%);
-	            background-image: -webkit-radial-gradient(45px 45px, circle cover, yellow, orange);
-            	background-image: radial-gradient(45px 45px 45deg, circle cover, yellow 0%, orange 100%, red 95%);
-            }
-			.axis path,
-            .axis line {
-                fill: none;
-                stroke: black;
-                shape-rendering: crispEdges;
-            }
-            .axis text {
-                font-family: sans-serif;
-                font-size: 11px;
-            }
-            .d3-tip {
-                line-height: 1;
-                font-weight: bold;
-                padding: 3px;
-                background: rgba(0, 0, 0, 0.8);
-                color: #fff;
-                border-radius: 2px;
-                font-family:sans-serif;
-                font-size:5px;}
-            .d3-tip:after {
-                box-sizing: border-box;
-                display: inline;
-                font-size: 10px;
-                width: 100%;
-                line-height: 1;
-                color: rgba(0, 0, 0, 0.8);
-                content: "\25BC";
-                position: absolute;
-                text-align: center;
-            }
-            #wrapper {
-                width: 600px;
-                border: 1px solid black;
-                overflow: hidden;
-                }
-            #england {
-                display: inline-block;
-                }
-            #spain {
-                display: inline-block;
-                }
-            #italy {
-                display: inline-block;
-                }
-            #sval {
-                display: inline-block;
-                }
-            #goals {
-                display: inline-block;
-                }
-            #assists {
-                display: inline-block;
-                } 
-        </style>
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -126,6 +68,8 @@
 <p>In this respository, we will store the data, create the relevant .ipynb workbooks and compile other information we need to complete the requirements for our Fall '15 CS109 Data Science Course'</p>
       </section>
       <section>
+          <h1>
+        <a id="transfer-plot" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plot comparing transfers across leagues</h1>
         <div id="wrapper">
         <div id="england">
         <input name="engButton" 
@@ -170,235 +114,14 @@
            onclick="viewAssists()" />
         </div>
     </div>
-    <div id="chartline1" ></div>
-        <!Code for the D3 visualization>
-        <script type="text/javascript"></script>
-	    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <div id="chartline1" ></div> 
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
-  </body>
-  <script>
-        var w = 600;
-        var h = 400;
-        var padding = 55;
-        var data;
-        var color;
-        var league_name;
-        var currency;
-        var k_val = 1;
-        loadAlldata();
-        function loadAlldata(){
-                d3.csv("All_transfers_with_value.csv", function(csv) {
-                dataset = csv; 
-                viewEngland();
-                });
-        }
-        function SeasonValue(dataset,val){
-                d3.select("svg").remove();
-
-                //Create div
-                var div = d3.select("#chartline1").append("div")   
-                        .attr("class", "tooltip")               
-                        .style("opacity", 0);
-                //Create SVG
-                var svg = d3.select("#chartline1")
-		            .append("svg")
-				    .attr("width", w)
-					.attr("height", h);
-
-                
-
-                var xScale = d3.scale.linear()
-				.domain([0, d3.max(dataset, function(d)
-                        { return +d.value; })])
-			    .range([padding, w-padding]);
-                
-                var rScale = d3.scale.sqrt()
-                .domain([0, d3.max(dataset, function(d) 
-                        { return d.ngoals+ d.nassists; })])
-                .range([2, 3.5]);
-
-                //Creating Tip
-                var tip = d3.tip()
-                .attr('class', 'd3-tip')
-                .offset([-10, 0])
-                .html(function(d) {
-                        return "<h1><strong>Name : </strong><span style='color:red'>"+ d.names+"</span></h1>"
-                        +"<h1><strong>Goals : </strong><span style='color:red'>"+ d.ngoals+"</span></h1>"
-                        +"<h1><strong>Assists : </strong><span style='color:red'>"+ d.nassists+"</span></h1>";
-                })
-                //Calling tip
-                svg.call(tip);
-                //Creating circles        
-                var circles = svg.selectAll("circle")
-			        .data(dataset)
-			        .enter()
-			        .append("circle")
-                    .on("click",function(d){console.log(d)})
-                    .on("mouseover",tip.show)
-                    .on("mouseout",tip.hide)
-                    .attr("fill",color);
-
-                    //Setting up x-axis 
-                    var xAxis = d3.svg.axis();
-                    xAxis.scale(xScale);
-                    xAxis.orient("bottom").ticks(5);
-
-                    svg.append("g").attr("class","axis")
-                    .attr("transform",
-                            "translate(0," + (h - padding) + ")")
-                    .call(xAxis);
-                    
-                    //Setting up the Title
-                    svg.append("text")
-                    .attr("x", w/2)
-                    .attr("y", 30)
-                    .attr("font-family","sans-serif")
-                    .attr("font-size",15)
-                    .style("text-anchor", "middle")
-                    .text(league_name);
-
-                    svg.append("text")
-                    .attr("x", w/2)
-                    .attr("y", h-5)
-                    .attr("font-family","sans-serif")
-                    .attr("font-size",12)
-                    .style("text-anchor", "middle")
-                    .text("Value(in "+currency+")");
-
-                    if (val == 1){
-                    //Create Y-scale
-                    var yScale = d3.scale.linear()
-                    .domain([0, d3.max(dataset, function(d) 
-                                { return +d.season_value; })])
-                    .range([h-padding, padding]);
-                    //Setting up y-axis
-                    var yAxis = d3.svg.axis();
-                    yAxis.scale(yScale);
-                    yAxis.orient("left").ticks(5);
-
-                    svg.append("g").attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(yAxis);
-                    
-                    circles.attr({cx:function(d)
-                        {return xScale(d.value);},
-                        cy:function(d)
-                        {return yScale(d.season_value);},
-                        r:function(d)
-                        {return rScale(d.nassists+d.ngoals);}});
-
-                    svg.append("text")
-                    .attr("transform","rotate(-90)")
-                    .attr("y", 10)
-                    .attr("x", -h/2-20)
-                    .attr("font-family","sans-serif")
-                    .attr("font-size",12) 
-                    .text("Season Value");
-                    }
-                    else if(val == 2){
-                     //Create Y-scale
-                    var yScale = d3.scale.linear()
-                    .domain([0, d3.max(dataset, function(d) 
-                                { return +d.ngoals; })])
-                    .range([h-padding, padding]);
-                    //Setting up y-axis
-                    var yAxis = d3.svg.axis();
-                    yAxis.scale(yScale);
-                    yAxis.orient("left").ticks(5);
-
-                    svg.append("g").attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(yAxis);
-                    
-                    circles.attr({cx:function(d)
-                        {return xScale(d.value);},
-                        cy:function(d)
-                        {return yScale(d.ngoals);},
-                        r:function(d)
-                        {return rScale(d.nassists+d.ngoals);}});
-
-                    svg.append("text")
-                    .attr("transform","rotate(-90)")
-                    .attr("y", 10)
-                    .attr("x", -h/2-20)
-                    .attr("font-family","sans-serif")
-                    .attr("font-size",12) 
-                    .text("Goals");
-                    }
-                    else if(val == 3){
-                     //Create Y-scale
-                    var yScale = d3.scale.linear()
-                    .domain([0, d3.max(dataset, function(d) 
-                                { return +d.nassists; })])
-                    .range([h-padding, padding]);
-                    //Setting up y-axis
-                    var yAxis = d3.svg.axis();
-                    yAxis.scale(yScale);
-                    yAxis.orient("left").ticks(5);
-
-                    svg.append("g").attr("class","axis")
-                    .attr("transform","translate("+padding+",0)")
-                    .call(yAxis);
-                    
-                    circles.attr({cx:function(d)
-                        {return xScale(d.value);},
-                        cy:function(d)
-                        {return yScale(d.nassists);},
-                        r:function(d)
-                        {return rScale(d.nassists+d.ngoals);}});
-
-                    svg.append("text")
-                    .attr("transform","rotate(-90)")
-                    .attr("y", 10)
-                    .attr("x", -h/2-20)
-                    .attr("font-family","sans-serif")
-                    .attr("font-size",12) 
-                    .text("Assists");
-                    }
-        }
-        function viewEngland(){
-                data = dataset.filter(function(d){
-                            return d.country == 'England'});
-                color = "#990000"
-                currency = "Pounds"
-                league_name = 'English League'
-                SeasonValue(data,k_val);
-        }
-        function viewSpain(){
-                data = dataset.filter(function(d){
-                            return d.country == 'Spain'});
-                color = "#0216AD"
-                currency = "Euros"
-                league_name = 'Spanish League'
-                SeasonValue(data,k_val);
-        }
-        function viewItaly(){
-                data = dataset.filter(function(d){
-                            return d.country == 'Italy'});
-                color = "#00994d"
-                currency = "Euros"
-                league_name = 'Italian League'
-                SeasonValue(data,k_val);
-        }
-        function viewSeasonValue(){
-                k_val = 1;
-                SeasonValue(data,1);
-        }
-        function viewGoals(){
-                k_val = 2;
-                SeasonValue(data,2);
-        }
-        function viewAssists(){
-                k_val = 3;
-                SeasonValue(data,3);
-        }
-        </script>
+  </body> 
 </html>
 <!doctype html>
 
