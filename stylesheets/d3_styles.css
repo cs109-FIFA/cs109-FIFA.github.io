@@ -1,12 +1,7 @@
 <style type="text/css"> 
-            circle:hover {
+            .circle:hover {
                 fill: orange;
-            } 
-            circle {
-                background-image: -moz-radial-gradient(45px 45px 45deg, circle cover, yellow 0%, orange 100%, red 95%);
-	            background-image: -webkit-radial-gradient(45px 45px, circle cover, yellow, orange);
-            	background-image: radial-gradient(45px 45px 45deg, circle cover, yellow 0%, orange 100%, red 95%);
-            }
+            }  
 			.axis path,
             .axis line {
                 fill: none;
