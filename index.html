@@ -77,6 +77,13 @@
             .wrapper{
                 margin-top:90px;
             }
+            .content {
+                margin-left: auto;
+                margin-right: auto;
+                table-layout: fixed;
+                border-collapse: collapse;
+                z-index: -1; position:relative
+            }
     </style>
   </head>
   <body>
@@ -114,6 +121,22 @@
 
 <p>In this respository, we will store the data, create the relevant .ipynb workbooks and compile other information we need to complete the requirements for our Fall '15 CS109 Data Science Course'</p>
       </section>
+      <!Section 1 - How transfer market has behaved>
+      <!Insert all images inside div with class content>
+      <section>
+        <h1>
+        <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Player transfer market over the years</h1>
+
+        <p>The player transfer market has seen ever increasing transfer amounts over the years. Ever increasing broadcasting deals have made the leagues richer which has reflected in the spending.</p>
+        <div class="content">
+        <img src='images/amountperyear.png' height=600 align='middle' style="border-style: none">
+        </div>
+        <p>We looked at the top 100 transfers in the last 20 years. The last five years alone account for 65 transfers in the top 100 list with the transfer record being shattered twice. This trend motivated us to investigate if the market was inflated and whether or not the players justified their value for the respective transfer amount.</p>
+        <div class="content">
+        <img src='images/numperyear.png' height=600 align='middle' style="border-style: none">
+        </div>
+      </section>
+      <!Inserting the D3 Visualization>
       <section>
           <h1>
         <a id="transfer-plot" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plot comparing transfers across leagues</h1>
@@ -163,6 +186,27 @@
     </div>
     <div id="chartline1" ></div> 
       </section>
+    
+    <section>
+        <h1>
+        <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Metric used for player Valuation</h1>
+
+        <p>Relevant details about the metric.</p>
+    </section>
+    <section>
+        <h1>
+        <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Top players over the period</h1>
+
+        <p>Using traditional statistics, we look at the best players in terms of goals and assists. The first plot show the best players for the season of 2012-13.</p>
+        <div class="content">
+        <img src='images/2012-13-top20-traditional.jpg' height=330 align='middle' style="border-style: none">
+        </div>
+        <p>We evaluate the top players for the season of 2012-13 using the metric which we have defined.</p>
+        <div class="content">
+        <img src='images/2012-13-top20-metric.jpg' height=330 align='middle' style="border-style: none">
+        </div>
+      </section>
+    
       <footer> 
       </footer>
     </div>
