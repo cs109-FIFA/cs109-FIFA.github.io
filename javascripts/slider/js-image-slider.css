@@ -113,6 +113,7 @@
 	position:absolute; border:none; display:none;
 }
 
+
 #slider div.sliderInner {
 	overflow:hidden; 
 	-webkit-transform: rotate(0.000001deg);/* fixed the Chrome not crop border-radius bug*/
