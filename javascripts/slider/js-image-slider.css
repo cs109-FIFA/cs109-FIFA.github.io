@@ -11,7 +11,7 @@
 }
 
 #slider, #slider div.sliderInner {
-    width:650px;height:450px;/* Must be the same size as the slider images */
+    width:500px;height:500px;/* Must be the same size as the slider images */
     margin-left: auto;
     margin-right: auto
 }
