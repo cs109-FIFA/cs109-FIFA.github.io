@@ -121,6 +121,12 @@
 
 <p>In this respository, we will store the data, create the relevant .ipynb workbooks and compile other information we need to complete the requirements for our Fall '15 CS109 Data Science Course'</p>
       </section>
+      <section>
+        <h1>
+            <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data scraping</h1>
+
+        <p>The transfer values were scraped from the Wikipedia link for transfers for every league for a season. The French and the German league did not have transfer values mentioned for the season's under consideration. The Spanish league did not have transfer data available for the summer of 2014.</p>
+    </section>
       <!Section 1 - How transfer market has behaved>
       <!Insert all images inside div with class content>
       <section>
@@ -231,6 +237,44 @@
         <iframe width="600" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~AbhishekMalali/24.embed" class="iframe-class"></iframe>
          
     </section>
+    <section>
+        <h1>
+            <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Validating our metric</h1>
+
+        <p>We train a few classifiers to identify whether or not we can predict calculated value from one season to the next. Initially, we will train a random forest classifier on a 70/30 train/test split from the 2012-2013 season.</p>
+        <p>Using the data, we run a Random forest regressor to figure out the most domninating features in the data.</p>
+        <div class="content">
+        <img src='images/feature-importance.jpg' height=450 align='middle' style="border-style: none">
+        </div>
+        <p>Here we see that the importance of the 'avg_value' and 'avg_value_smoothed' features far outweigh the others. After seeing this, we'll remove the two of them and only use the incremented totals for goals and assists.</p>
+        <div class="content">
+        <img src='images/feature-importance-corrected.jpg' height=450 align='middle' style="border-style: none">
+        </div>
+        <p>After training and predicting, we see a tight grouping around the 45 degree line.</p>
+        <div class="content">
+        <img src='images/actual-vs-predicted-2012-13.jpg' height=450 align='middle' style="border-style: none">
+        </div>
+        <p>After training and predicting on the 2013-14 dataset.</p>
+        <div class="content">
+        <img src='images/actual-vs-predicted-2013-14.jpg' height=450 align='middle' style="border-style: none">
+        </div>
+        <p>We use a linear regressor to predict and we find a very high accuracy for both the seasons.</p>
+        <div class="content">
+        <img src='images/rf-actual-vs-predicted-2012-13.jpg' height=450 align='middle' style="border-style: none">
+        </div>
+        <p>Add extra comments.</p>
+         <div class="content">
+        <img src='images/rf-actual-vs-predicted-2013-14.jpg' height=450 align='middle' style="border-style: none">
+        </div>
+    </section>
+
+    <section>
+        <h1>
+            <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h1>
+
+        <p>Fill in relevant details</p>
+    </section>
+
     
       <footer> 
       </footer>
