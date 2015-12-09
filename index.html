@@ -205,7 +205,32 @@
         <div class="content">
         <img src='images/2012-13-top20-metric.jpg' height=330 align='middle' style="border-style: none">
         </div>
+        <p>Comparing our proposed metric with the traditional statistics,</p>
+        <div class="content">
+        <img src='images/rankingDiff.jpg' height=500 align='middle' style="border-style: none">
+        </div>
+        <p>For the two most recognisable players, Lionel Messi and Cristiano Ronaldo we see how their scores evolve over the season in the plot below. A consistent performance in most games is the desirable trend we want to see with the succesfull forwards.</p>
+        <div class="content">
+        <img src='images/messi-vs-ronaldo-12-13.jpg' height=350 align='middle' style="border-style: none">
+        </div>
+        <p>To check consistency of our metric against what really transpired in the season, we add up all the scores for the players in a team and rank them. We then compare this ranking to the actual ranking of the team achieved in the season. As the plot shows below, the rankings predicted by our measure were close to actual results and showed a correlation of 0.73. This is due to us giving consideration to the attacking statistics and lack of freely available defensive statistics data.</p>
+        <div class="content">
+        <img src='images/correlation-plot-bpl-12-13.jpg' height=500 align='middle' style="border-style: none">
+        </div>
+        <p>For the spanish league for the season 2012-13 we did find or rankings to be much closer to the final rankings. In this case the correlation was 0.92.</p>
+        <div class="content">
+        <img src='images/correlation-plot-spl-12-13.jpg' height=500 align='middle' style="border-style: none">
+        </div>
       </section>
+      <section>
+        <h1>
+        <a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clustering the players on the basis of metrics</h1>
+
+        <p>We cluster the players on the data we have and the mtrics formulated by us to see which players perform similarly. We found clusters of similar minded players for both seasons. An interesting way of looking at performance would be find players who move between clusters over seasons. This can indicate an improvement or decrement in performance over seasons.</p>
+        <div class="content">
+        <iframe width="600" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~AbhishekMalali/15.embed"></iframe>
+        </div>
+    </section>
     
       <footer> 
       </footer>
