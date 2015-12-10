@@ -330,6 +330,12 @@ section {
   padding-bottom:50px;
 }
 
+/* Sidebar - hoping to shift content to be centered to the right */
+.left {
+	position:absolute;
+    left:0; top:84px; bottom: 0;
+    width: 650px;
+}
 
 /* Footer */
 
