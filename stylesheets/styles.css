@@ -202,7 +202,9 @@ th {
 
 td {
   padding: 10px;
-	background: #ccc;
+  border-style: hidden;
+	padding: 5px .5em 5px .4em;
+	/*background: #ccc;*/
  }
 
 
