@@ -233,40 +233,7 @@
 
         <p>Relevant details about the metric.</p>
     </section>
-    <section>
-        <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Top players over the period</h1>
 
-        <p>Using traditional statistics, we look at the best players in terms of goals and assists. The first plot show the best players for the season of 2012-13. The top players were names you would have heard of even if you aren't as ardent a soccer fan as our team.</p>
-        <div class="content">
-        <img src='images/2012-13-top20-traditional.jpg' height=330 align='middle' style="border-style: none">
-        </div>
-        <p>We evaluate the top players for the season of 2012-13 using the metric which we have defined.</p>
-        <div class="content">
-        <img src='images/2012-13-top20-metric.jpg' height=330 align='middle' style="border-style: none">
-        </div>
-        <p>Our list of top 20 players is very similar to the list we generated using traditional statistics. But in effect there are a few names we might come across as anomalies like Stephan Kiessling. This just goes to show that our metric gives credit to players who are valuable in contributions but are forgotten when we look at their absolute statistics. Comparing our proposed metric with the traditional statistics.</p>
-        <div class="content">
-        <img src='images/rankingDiff2.jpg' height=400 align='middle' style="border-style: none">
-        </div> 
-        <p>In the plot above we chart the ranking according to our metric compared to the ranking if we went along traditionally. The 45 degree line is plotted for reference. We see that certain players who were ranked highly as per the goals + assist metric did fall down the ranking ladder when the metric changed. The metric does not affect the top players since we see a close grouping near the origin. But as we go down the ranking ladder we see significant jumps. We find lots of players who weren't ranked well now within the top 50. This directly states that we are doing a decent job of finding underrated players who contribute immensely but are not noticed.</p>
-
-        <p>For the two most recognisable players, Lionel Messi and Cristiano Ronaldo we see how their scores evolve over the season in the plot below. A consistent performance in most games is the desirable trend we want to see with the succesfull forwards.</p>
-        <div class="content">
-        <img src='images/messi-vs-ronaldo-12-13.jpg' height=350 align='middle' style="border-style: none">
-        </div>
-        <p>As you can see from the time series above Messi dominated Cristiano Ronaldo in almost every game for the 2012-13 season. The contribution was rewarded with the FIFA World Player of the Year award for Messi for 2012 season.</p>
-
-        <p>We were keen on analyzing these time series for some interesting players for a season. But complexity of analyzing every set of players visually and making key discoveries was cumbersome.</p>
-
-        <p>To check consistency of our metric against what really transpired in the season, we add up all the scores for the players in a team and rank them. We then compare this ranking to the actual ranking of the team achieved in the season. As the plot shows below, the rankings predicted by our measure were close to actual results and showed a correlation of 0.73. This is due to us giving consideration to the attacking statistics and lack of freely available defensive statistics data.</p>
-        <div class="content">
-        <img src='images/correlation-plot-bpl-12-13.png' height=500 align='middle' style="border-style: none">
-        </div>
-        <p>For the spanish league for the season 2012-13 we did find or rankings to be much closer to the final rankings. In this case the correlation was 0.92.</p>
-        <div class="content">
-        <img src='images/correlation-plot-spl-12-13.png' height=500 align='middle' style="border-style: none">
-        </div>
-      </section>
       <section>
         <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clustering the players on the basis of metrics</h1>
         <p>As football enthusiasts a key question which we wanted to address to find the players which are very similar. This would be meaningless if it was done just using the data like goals and assists, since those numbers can mislead us on the contribution. Hence we used the entirety of the data including the unwrapped contribution time series. This would cluster players who contribute similarly in the games as well over the seasons.</p>
@@ -281,11 +248,55 @@
     <section>
         <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Validating our metric</h1>
 
+        <h3><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Top players over the period</h3>
+
+        <p>Using traditional statistics, we look at the best players in terms of goals and assists. The first plot show the best players for the season of 2012-13. The top players were names you would have heard of even if you aren't as ardent a soccer fan as our team.</p>
+        <div class="content">
+        <img src='images/2012-13-top20-traditional.jpg' height=330 align='middle' style="border-style: none">
+        </div>
+        <p>We evaluate the top players for the season of 2012-13 using the metric which we have defined. Our list of top 20 players is very similar to the list we generated using traditional statistics. But in effect there are a few names we might come across as anomalies like Stephan Kiessling. This shows the intent of our metric, where credit is given to players who are contribute to their teams success but are easily overlooked when only looking at their absolute statistics. This demonstrates the utility of valuing players based on the impact they have on the outcome of a match.</p>
+        <div class="content">
+        <img src='images/2012-13-top20-metric.jpg' height=330 align='middle' style="border-style: none">
+        </div>
+        <p></p>
+        
+        <div class="content">
+        <img src='images/rankingDiff2.jpg' height=400 align='right' style="border-style: none">
+        </div> 
+        <p>We chart the ranking according to our metric compared to the ranking with traditional statistics. The 45 degree line is plotted for reference. We see that certain players who were ranked highly as per the goals + assist metric did fall down the ranking ladder when the metric changed. The metric does not affect the top players since we see a close grouping near the origin. But as we go down the ranking ladder we see significant jumps. We find lots of players who weren't ranked well now within the top 50. This directly states that we are doing a decent job of finding underrated players who contribute immensely but are not noticed.</p>
+
+
+        <h3>What about the Giants?</h3>
+        <p>For the two most recognisable players, Lionel Messi and Cristiano Ronaldo we see how their scores evolve over the season in the plot below. A consistent performance in most games is the desirable trend we want to see with the succesfull forwards.</p>
+        <div class="content">
+        <img src='images/messi-vs-ronaldo-12-13.jpg' height=350 align='middle' style="border-style: none">
+        </div>
+        <p>As you can see from the time series above Messi dominated Cristiano Ronaldo in almost every game for the 2012-13 season. The contribution was rewarded with the FIFA World Player of the Year award for Messi for 2012 season.</p>
+
+        <p>We were keen on analyzing these time series for some interesting players for a season. But complexity of analyzing every set of players visually and making key discoveries was cumbersome.</p>
+
+        <h3>Predictive Power of our metric</h3>
+
+        <p align='left'>To check consistency of our metric against what really transpired in the season, we add up all the scores for the players in a team and rank them. We then compare this ranking to the actual ranking of the team achieved in the season. As the plot shows below, the rankings predicted by our measure were close to actual results and showed a correlation of 0.73. This is due to us giving consideration to the attacking statistics and lack of freely available defensive statistics data.</p>
+
+        <p>For the spanish league for the season 2012-13 we did find or rankings to be much closer to the final rankings. In this case the correlation was 0.92.</p>
+          
+          <div class="content">
+            <div id="sliderFrame" align='right'>
+            <div id="slider">
+              <img src='images/correlation-plot-bpl-12-13.png'>
+              <img src='images/correlation-plot-spl-12-13.png'>
+              <img src='images/correlation-plot-bund-12-13.png'>
+              <img src='images/correlation-plot-fr-12-13.png'>
+              <img src='images/correlation-plot-ita-12-13.png'>
+            </div>
+            </div>
+          </div>
+
+
         <p>We train a few classifiers to identify whether or not we can predict calculated value from one season to the next. Initially, we will train a random forest classifier on a 70/30 train/test split from the 2012-2013 season.</p>
         <p>Using the data, we run a Random forest regressor to figure out the most domninating features in the data.</p>
-        <div class="content">
-        <img src='images/feature-importance.jpg' height=450 align='middle' style="border-style: none">
-        </div>
+
         <p>Here we see that the importance of the 'avg_value' and 'avg_value_smoothed' features far outweigh the others. After seeing this, we'll remove the two of them and only use the incremented totals for goals and assists.</p>
         <div class="content">
         <img src='images/feature-importance-corrected.jpg' height=450 align='middle' style="border-style: none">
