@@ -120,7 +120,8 @@
       </header> 
         
       <section>
-        <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Evaluation of football player performance</h1>
+
+        <h1 style="width:150%"><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong><font size="20">Evaluation of player performance</font></strong></h1>
          
           <p>The primary motive of the project outlined below was designed to answer the following question: Can we evaulate and infer a player's value to his team based solely on the impact that they have on matches? In this respect, and to simplify our analysis, we define "impact" to mean the goals and assists provided for their team during various game states.</p>
 
@@ -128,16 +129,16 @@
       <section>
         <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Overview</h1>
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/m2rhRJkWOEI" frameborder="0" allowfullscreen></iframe>
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/Kgj5-JGkNTA" frameborder="0" allowfullscreen></iframe>
 
-        <h3>Background and Motivation</h3>
+        <h3>Background and motivation</h3>
 
 
         <p>When football clubs do not perform equal to their, and their fans', expectations they look to infuse their team with more talented players, typically drawn from lower-tier or financially poor teams. The financial incentive for both teams in any transaction is clear, the buying team has hope that the new addition will put them over the top talent-wise to improve their standing in league competition while the selling team may look at the new funds as a way to prepare for the future and secure several new players to improve their team long-term.</p>
         
         <p>Within the last 5 years, the economy of player transfers has undergone significant inflation where the top-tier clubs have shown a willingness to overpay for marginal talent or for players that may not be a good fit in their team. There is some notion that the transfer system is broken and is in need of revitalization. There are multiple ways to address the psychology of club executives and try to identify their motivations for spending money to procure new talent for their team. We refrain from any investigation into club finances but want to determine a method by which we can accurately and objectively place value on any player based on the impact that they have on the matches they play in.</p>
         
-        <h3>Project Objectives</h3>
+        <h3>Project objectives</h3>
         <p>Our primary motivation is to quantify the impact (based on goals scored, assists made and consistency of play) an individual player has on the games which he plays for his team. We intend to use this quantity for each player to infer their value (agnostic of team at first). With this calculated player impact value, we attempt to group and classify separate tiers of player impact with the goal of identifying what players have performed to the value placed on them in reality.</p>
 
       <!Section 1 - How transfer market has behaved>
@@ -171,14 +172,14 @@
 
       </section>
       <section>
-        <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Acquisition</h1>
+        <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data acquisition</h1>
         <p> The data we use for our analysis is scraped is from <a href="http://www.worldfootball.net">World Football.net</a>. World Football has match by match data in terms of the players who participated in the games as well as the goal scorers. The site had data for all the five leagues which we were interested in. The url links were not hard to deal with provided we had a list of teams which participated in a league for that year. An example url that we visited to acquire data can be viewed <a href="http://www.worldfootball.net/report/premier-league-2012-2013-swansea-city-everton-fc/">here</a>. We scraped the goalscorers, players who assisted the goalscorer along with the time at which the goal was scored. We also recorded whether the goal scorer or assist maker were substituted. We scraped the data from the top 5 European leagues (British, Spanish, German, Italian and French) for the complete 2012-13 and 2013-14 seasons. Overall we scraped 760 pages for each league which totaled ~3800 webpages.</p>
 
         <p>The transfer values were scraped from the <a href='https://en.wikipedia.org/wiki/Football'>Wikipedia</a> page for transfers for each league for each season we considered. The French and the German league did not have transfer values mentioned for the seasons under consideration. The Spanish league did not have transfer data available for the summer of 2014. An example of the data which we had to scrape can be viewed <a href="https://en.wikipedia.org/wiki/List_of_English_football_transfers_summer_2013">here</a>.</p>
     </section>
       <!Inserting the D3 Visualization>
       <section>
-          <h1><a id="transfer-plot" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plot comparing transfers across leagues</h1>
+          <h1><a id="transfer-plot" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparing transfers across leagues</h1>
         <p>We wanted to visualize where the big money transfers were happening. The plot below was built in D3 for specifically that purpose. It was see the emphasis of the price of the player on different emtrics like goals, assists and the metric score generated by us. This could also help find groupings of players who were available in the similar price range while providing the same attacking punch in terms of goals.</p>
         <div id="wrapper">
         <div id="england">
@@ -228,7 +229,7 @@
       </section>
     
     <section>
-        <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Metric used for player Valuation</h1>
+        <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Metric used for player valuation</h1>
 
         <p>Relevant details about the metric.</p>
     </section>
@@ -316,7 +317,7 @@
         <img src='images/feature-importance-corrected.jpg' height=450 align='middle' style="border-style: none">
       </div>
       
-      <p>Once we trained our regressions we wanted to get a sense of the influence each feature, derived from our metric, had on our prediction model. We see that the importance of the 'ngoals' and 'nassists' (the number of goals and assists respectively) far outweigh the others as would be expected. It is satisfying to see that the other features describing different aspects of the goal are also nontrivial and contribute to the final prediction model. With the assurance that our model was utilizing the extracted features from our data correctly we move on to actually predicting the performance of players, based on our metric, in the following season.</p>
+      <p>Once we trained our regressions we wanted to get a sense of the influence each feature, derived from our metric, had on our prediction model. We see that the importance of the 'ngoals' and 'nassists' (the number of goals and assists respectively) far outweigh the others as would be expected. It is satisfying to see that the other features describing different aspects of the goal are also nontrivial and contribute to the final prediction model. With the assurance that our model was utilizing the extracted features from our data correctly we move on to actually predicting the performance of players, based on our metric, in the following season. We fully expect the linear regression to more accurately predict the player's performance as the metric that the regression trained on is a simple linear weighting of goals and assists recorded by each player.</p>
       
       <div class="content">
         <table>
@@ -339,14 +340,20 @@
         </table>
       </div>
     
-      <p>We use a linear regressor to predict and we find a very high accuracy for both the seasons.</p>
+      <p>As expected, the linear regression very nearly predicts the measured impact for each player in the 2013-14 season. The correlation between predicted and actual value was 0.994. The random forest regression doesn't perform that much worse (correlation = 0.965) but you can see that it undervalues the players who score higher as per our metric. This is likely due to the majority of players having lower scores, thus biasing our regression slightly.</p>
 
-        <p>Add extra comments.</p>
-
-       <div class="content">
-
-      </div>
     </section>
+
+    <section>
+      <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="ture"><span class="octicon octicon-link"></span></a>Evaluating transfer values</h1>
+
+      <p>In order to evaluate the trend of player performance with respect to transfer value we consider the subset of players who were transferred between the 2012-13 and 2013-14 seasons (of the data we collected). We use the ranking of the cluster they are assigned to in each season to compare their performance across the two seasons. The difference between the two rankings is then shown below.
+
+      <div class="content">
+        <img src='images/validating-transfer-values.png' height=400 align='middle' style='border-style: none'>
+      </div>
+
+      <p>The performance differential of these players is ordered from left to right based on the amount that the players were transferred for between the two seasons. Gareth Bale, who was transferred from Tottenham Hotspur to Real Madrid for a record $132 M, is on the far right. We use this figure to demonstrate, at least on the surface, if the transfer of a certain player was a good or bad investment for the team. Clearly, there is some of both and a majority of players who perform similarly across the two seasons. There isn't enough data to infer any sort of trend (ie. highest valued players generally underperform) from this analysis but it is easy to see why players like Alexi Sanchez and Marouane Fellaini have such divergent reputations in the world of football.</p>
 
     <section>
         <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusions</h1>
