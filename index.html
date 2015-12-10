@@ -138,7 +138,7 @@
         <p>Within the last 5 years, the economy of player transfers has undergone significant inflation where the top-tier clubs have shown a willingness to overpay for marginal talent or for players that may not be a good fit in their team. There is some notion that the transfer system is broken and is in need of revitalization. There are multiple ways to address the psychology of club executives and try to identify their motivations for spending money to procure new talent for their team. We refrain from any investigation into club finances but want to determine a method by which we can accurately and objectively place value on any player based on the impact that they have on the matches they play in.</p>
         
         <h3>Project Objectives</h3>
-        <p>Our primary motivation is to quantify the impact (based on goals scored, assists made and consistency of play) an individual player has on the games which he plays for his team. We intend to use this quantity for each player to infer their value (agnostic of team at first and later based on current team and potential buyers). We hope to learn more about what goes into modeling player value, beyond subjective measures of team they currently play for and the league they currently play in, and how we can compare like players with each other.</p>
+        <p>Our primary motivation is to quantify the impact (based on goals scored, assists made and consistency of play) an individual player has on the games which he plays for his team. We intend to use this quantity for each player to infer their value (agnostic of team at first). With this calculated player impact value, we attempt to group and classify separate tiers of player impact with the goal of identifying what players have performed to the value placed on them in reality.</p>
 
       <!Section 1 - How transfer market has behaved>
       <!Insert all images inside div with class content>
@@ -172,10 +172,9 @@
       </section>
       <section>
         <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Acquisition</h1>
-        <p> The data we use for our analysis is scraped is from <a href="http://www.worldfootball.net">World Football</a>. World Football has match by match data in terms of the players who participated in the games as well as the goal scorers. The site had data for all the five leagues which we were interested in. The url links were not hard to deal with provided we had a list of teams which participated in a league for that year. We scraped the goalscorers, players who assisted the goalscorer along with the time at which the goal was scorer. We also recorded the time at which the goal was scored and whether the goal scorer and assist maker were substituted. We scraped the data for the seasons of 2012-13 and 2013-14 and faced minor hiccups with the Italian team of Atalanta for which we had manually enter the data.</p>
-        <p>Overall we scrape 760 pages for every league which in total was about 3800 webpages.</p>
+        <p> The data we use for our analysis is scraped is from <a href="http://www.worldfootball.net">World Football.net</a>. World Football has match by match data in terms of the players who participated in the games as well as the goal scorers. The site had data for all the five leagues which we were interested in. The url links were not hard to deal with provided we had a list of teams which participated in a league for that year. An example url that we visited to acquire data can be viewed <a href="http://www.worldfootball.net/report/premier-league-2012-2013-swansea-city-everton-fc/">here</a>. We scraped the goalscorers, players who assisted the goalscorer along with the time at which the goal was scored. We also recorded whether the goal scorer or assist maker were substituted. We scraped the data from the top 5 European leagues (British, Spanish, German, Italian and French) for the complete 2012-13 and 2013-14 seasons. Overall we scraped 760 pages for each league which totaled ~3800 webpages.</p>
 
-        <p>The transfer values were scraped from the Wikipedia link for transfers for every league for a season. The French and the German league did not have transfer values mentioned for the season's under consideration. The Spanish league did not have transfer data available for the summer of 2014. An example of the data which we had to scrape can be looked here at <a href="https://en.wikipedia.org/wiki/List_of_English_football_transfers_summer_2013">Wikipedia</a>.</p>
+        <p>The transfer values were scraped from the <a href='https://en.wikipedia.org/wiki/Football'>Wikipedia</a> page for transfers for each league for each season we considered. The French and the German league did not have transfer values mentioned for the seasons under consideration. The Spanish league did not have transfer data available for the summer of 2014. An example of the data which we had to scrape can be viewed <a href="https://en.wikipedia.org/wiki/List_of_English_football_transfers_summer_2013">here</a>.</p>
     </section>
       <!Inserting the D3 Visualization>
       <section>
@@ -236,13 +235,13 @@
 
       <section>
         <h1><a id="cs109-FIFA" class="anchor" href="#cs109-fifa" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clustering the players on the basis of metrics</h1>
-        <p>As football enthusiasts a key question which we wanted to address to find the players which are very similar. This would be meaningless if it was done just using the data like goals and assists, since those numbers can mislead us on the contribution. Hence we used the entirety of the data including the unwrapped contribution time series. This would cluster players who contribute similarly in the games as well over the seasons.</p>
+        <p>As football enthusiasts a key question we wanted to address was to find the players which are valued similarly, as per our metric. This would be meaningless if it was done only using goals and assists since those numbers can distract from a player's true impact on his team. Hence we used the entirety of the data including the unwrapped contribution time series. This would cluster players who contribute similarly in the games as well over the seasons.</p>
 
-        <p>We found clusters of similar minded players for both seasons. An interesting way of looking at performance would be find players who move between clusters over seasons. This can indicate an improvement or decrement in performance over seasons.</p>
+        <p>We found clusters of similarly influential players for both seasons. An interesting way of looking at long-term performance would be finding players who move between clusters over seasons. This can indicate a player's improvement or decline in performance from season to season. With enough data and multiple seasons, we would then be able to track a players trajectory and possibly predict their future performance.</p>
         <iframe width="600" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~AbhishekMalali/20.embed" class="iframe-class"></iframe>
         <iframe width="600" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~AbhishekMalali/24.embed" class="iframe-class"></iframe>
 
-        <p> An interesting note to make here would be that Messi was classified with Robin van persie who had way lesser goals and assists. He was equally monumental in helping his team to the Premier league title. These were the kind of clusters and observations we were hoping we would get to see when we processed and clustered our data.</p>
+        <p> An interesting note to make here would be that Messi is classified with Robin van Persie who had fewer goals and assists. He was, however, equally influential in helping his team to the British Premier League title. These were the kind of clusters and observations we were hoping we would see when we processed and analyzed our data.</p>
          
     </section>
     <section>
@@ -266,12 +265,12 @@
         <p>We chart the ranking according to our metric compared to the ranking with traditional statistics. The 45 degree line is plotted for reference. We see that certain players who were ranked highly as per the goals + assist metric did fall down the ranking ladder when the metric changed. The metric does not affect the top players since we see a close grouping near the origin. But as we go down the ranking ladder we see significant jumps. We find lots of players who weren't ranked well now within the top 50. This directly states that we are doing a decent job of finding underrated players who contribute immensely but are not noticed.</p>
 
 
-        <h3>What about the Giants?</h3>
-        <p>For the two most recognisable players, Lionel Messi and Cristiano Ronaldo we see how their scores evolve over the season in the plot below. A consistent performance in most games is the desirable trend we want to see with the succesfull forwards.</p>
+        <h3>What about the giants?</h3>
+        <p>For the two most globally recognisable players, Lionel Messi and Cristiano Ronaldo we see how their scores evolve over the season in the plot below. Consistent performance over the course of the season is the most desirable trend among succesful forwards.</p>
         <div class="content">
         <img src='images/messi-vs-ronaldo-12-13.jpg' height=350 align='middle' style="border-style: none">
         </div>
-        <p>As you can see from the time series above Messi dominated Cristiano Ronaldo in almost every game for the 2012-13 season. The contribution was rewarded with the FIFA World Player of the Year award for Messi for 2012 season.</p>
+        <p>As is shown in the time series above, Messi consistently outperformed Ronaldo in almost every game for the 2012-13 season. The contribution was recognized and rewarded as Messi was named the FIFA World Player of the Year following the 2012 season.</p>
 
         <p>We were keen on analyzing these time series for some interesting players for a season. But complexity of analyzing every set of players visually and making key discoveries was cumbersome.</p>
 
@@ -279,7 +278,7 @@
 
     <h5>League Prediction</h5>
         
-      <p>To check consistency of our metric against what really transpired in the season, we add up all the scores for the players in a team and rank them. We then compare this ranking to the actual ranking of the team achieved in the season. As the figure shows below, the rankings predicted by our measure were not far from the actual results and showed correlations no worse than 0.73.</p>
+      <p>To check consistency of our metric against what actually happened in the seasons we evaluated, we combine the scores for each player in a team. We then rank each team in the league by their aggregate score and compare this ranking to the actual place the team finished the season. As the figure shows below, the rankings predicted by our measure were not far from the actual results and showed correlations no worse than 0.73.</p>
 
       <div class="content">
         <table>
@@ -305,42 +304,47 @@
       </table>
     </div>
     
-      <p>The leagues that our metric most accurately predicted, when aggregated by club, were the Spanish (corr = 0.92) and French (corr = 0.88) leagues. Traditionally these leagues are known for allowing for more goals and since our metric, at present, is solely based on scoring statistics it is clear these successes are understandable. The British, German and Italian leagues are more measured defensively and it is inferred that the less accurate prediction of these leagues is due to not accounting for defensive statistics. </p>
+      <p>The leagues that our metric most accurately predicted, when aggregated by team, were the Spanish (corr = 0.92) and French (corr = 0.88) leagues. Traditionally these leagues are known for allowing for more goals and since our metric, at present, is solely based on scoring statistics it is clear these successes are understandable. The British, German and Italian leagues are more measured defensively and it is inferred that the less accurate prediction of these leagues is due to not accounting for defensive statistics. </p>
 
     <h5>Individual Player Prediction</h5>
         
-      <p>We train a few classifiers to identify whether or not we can predict calculated value from one season to the next. Initially, we will train a random forest classifier on a 70/30 train/test split from the 2012-2013 season.</p>
-        
-      <p>Using the data, we run a Random forest regressor to figure out the most domninating features in the data.</p>
+      <p>In order to further validate our metric of player impact we trained two separate regressions, trained on the data from the 2012-13 season and tested on the 2013-14 season.Initially, we trained a random forest regressor and then utilized an ordinary linear regression.</p>
 
-      <p>Here we see that the importance of the 'avg_value' and 'avg_value_smoothed' features far outweigh the others. After seeing this, we'll remove the two of them and only use the incremented totals for goals and assists.</p>
+      
         
       <div class="content">
         <img src='images/feature-importance-corrected.jpg' height=450 align='middle' style="border-style: none">
       </div>
       
-      <p>After training and predicting, we see a tight grouping around the 45 degree line.</p>
+      <p>Once we trained our regressions we wanted to get a sense of the influence each feature, derived from our metric, had on our prediction model. We see that the importance of the 'ngoals' and 'nassists' (the number of goals and assists respectively) far outweigh the others as would be expected. It is satisfying to see that the other features describing different aspects of the goal are also nontrivial and contribute to the final prediction model. With the assurance that our model was utilizing the extracted features from our data correctly we move on to actually predicting the performance of players, based on our metric, in the following season.</p>
       
       <div class="content">
-        <img src='images/actual-vs-predicted-2012-13.jpg' height=450 align='middle' style="border-style: none">
-      </div>
-        
-      <p>After training and predicting on the 2013-14 dataset.</p>
-      
-      <div class="content">
-        <img src='images/actual-vs-predicted-2013-14.jpg' height=450 align='middle' style="border-style: none">
+        <table>
+          <tr>
+            <th>
+              <p align="center">Random Forest</p>
+            </th>
+            <th>
+              <p align="center">Linear Regression</p>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <img src='images/actual-vs-predicted-2013-14.jpg' height=300 align='middle' style="border-style: none">
+            </td>
+            <td>
+              <img src='images/rf-actual-vs-predicted-2013-14.jpg' height=300 align='middle' style="border-style: none">
+            </td>
+          </tr>
+        </table>
       </div>
     
       <p>We use a linear regressor to predict and we find a very high accuracy for both the seasons.</p>
 
-      <div class="content">
-        <img src='images/rf-actual-vs-predicted-2012-13.jpg' height=450 align='middle' style="border-style: none">
-      </div>
-
         <p>Add extra comments.</p>
 
        <div class="content">
-        <img src='images/rf-actual-vs-predicted-2013-14.jpg' height=450 align='middle' style="border-style: none">
+
       </div>
     </section>
 
